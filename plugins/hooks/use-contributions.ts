@@ -13,11 +13,11 @@ export const useContributions = () => {
   useEffect(() => {
     const getContributions = () => {
       return colossus.contributions(address).then(score => {
-        setContributions(Number(score) / 1000)
+        setContributions(Number(score))
         if (loading) setLoading(false)
       }).catch(setError)
     }
-    const interval = setInterval(getContributions, 5000)
+    const interval = setInterval(getContributions, 10000)
     getContributions()
     return () => clearInterval(interval)
   }, [])
